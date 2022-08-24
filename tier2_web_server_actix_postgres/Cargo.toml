@@ -1,0 +1,24 @@
+[package]
+name = "tier2_web_server_actix_postgres"
+version = "0.0.15"
+description = "07. Tutorial for Coding a database Web UI in Rust (database_web_ui_on_server) (2022-08)"
+authors = ["bestia.dev"]
+homepage = "https://bestia.dev"
+edition = "2021"
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/bestia-dev/database_web_ui_on_server"
+categories = ["rust-patterns"]
+keywords = ["tutorials"]
+publish = false
+
+[dependencies]
+log = "0.4"
+pretty_env_logger="0.4.0"
+thiserror = "1.0.30"
+anyhow="1.0.56"
+actix-web = "4.1.0"
+mime="0.3.16"
+tokio-postgres="0.7.6"
+dotenv="0.15.0"
+deadpool-postgres = "0.10.2"
