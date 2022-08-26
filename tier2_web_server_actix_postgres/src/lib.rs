@@ -1,7 +1,11 @@
 // database_web_ui_on_server/tier2_web_server_actix_postgres/src/lib.rs
 
 mod actix_mod;
+mod deadpool_mod;
+mod postgres_mod;
+
 pub use actix_mod::*;
+pub use deadpool_mod::deadpool_postgres_start;
 
 use thiserror::Error;
 #[derive(Error, Debug)]

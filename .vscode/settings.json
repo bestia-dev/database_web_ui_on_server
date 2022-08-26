@@ -3,15 +3,32 @@
         "actix",
         "Alla",
         "bestia",
+        "bindgen",
         "crev",
         "DBNAME",
         "deadpool",
         "dotenv",
         "endregion",
+        "enduml",
         "Nazdravlje",
+        "plantuml",
         "Prost",
         "rustlang",
+        "startuml",
         "thiserror",
+        "Webassembly",
         "zdravje"
+    ],
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "askForPassword": true,
+            "driver": "PostgreSQL",
+            "name": "localhost:5432",
+            "database": "webpage_hit_counter",
+            "username": "admin"
+        }
     ]
 }
