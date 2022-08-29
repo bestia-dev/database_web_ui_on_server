@@ -139,8 +139,33 @@ We will use our Rust development environment in a container like we do in all Ru
 
 ## First request
 
-We will start coding with the web server to reply a simple static html code and try it immediately. From the last tutorial we know how to add the Actix crate to Cargo.toml and how to start the server and route the request to call a function. Let call the route and the function hit_counter_list.  
-We will also use the same exact database webpage_hit_counter as the last tutorial. I want to create, read, update and delete data for tables webpage and hit_counter.  
+We will start coding with the web server to reply a simple static html code and try it immediately. From the last tutorial we know how to add the Actix crate to Cargo.toml and how to start the server and route the request to call a function. Let call the route and the function "hit_counter_list".  
+We will also use the same exact database "webpage_hit_counter" as the last tutorial. I want to create, read, update and delete data for tables "webpage" and "hit_counter".  
+
+## webpage_hits object
+
+The user interface will show just one data object "webpage_hits". It is a view that joins the 2 tables together. So to spice it up a little.  
+First we create all views and functions inside the postgres database.
+Then a Rust module just for that.
+
+We want the web routing code to be close to the implementation. We can use the actix ServiceConfig for that. First we use the actix_web scope function to route all requests that start with "webpage_hits" to the Rust module. Then inside the module we will route to the appropriate function using the decoration "#actix web get". Very easy once it is in place.
+
+For the CRUD User interface we need 7 functions. The 3 functions not included in the acronym CRUD are: List, New and Edit. This is part of the User Interface, there is not a lot of data manipulation here. So we have more or less:
+7 web paths,
+7 Rust functions,
+5 database functions and 1 view.
+
+In the first iteration of the project there will be a lot of code duplication. This enables great flexibility, but the maintenance can get boring if we need to change something.
+Having the HTML code inside the Rust code is also not great. We will make it better the next time.
+
+## Error handling
+
+We need some error handling now. We want to show a meaningful message to the user and to log something more detailed for the developer.
+Actix has a trait we can use for error handling.
+
+
+
+
 
 
 

@@ -119,9 +119,9 @@ fn task_build() {
     println!(
         r#"{YELLOW}
     After `cargo auto build`, run the compiled binary, examples and/or tests
-./target/debug/database_web_ui_on_server
+cd web_server_folder ; ../target/debug/database_web_ui_on_server ; cd ..
     In the browser or in curl open 
-http://localhost:8080/database_web_ui_on_server/hit_counter_list
+http://localhost:8080/database_web_ui_on_server/webpage_hits/webpage_hits_list
     if ok, then
 cargo auto release
 {RESET}"#
@@ -151,9 +151,9 @@ fn task_release() {
     println!(
         r#"{YELLOW}
     After `cargo auto release`, run the compiled binary, examples and/or tests
-./target/release/database_web_ui_on_server
+cd web_server_folder ; ../target/release/database_web_ui_on_server; cd ..
     In the browser or in curl open 
-http://localhost:8080/database_web_ui_on_server/hit_counter_list
+http://localhost:8080/database_web_ui_on_server/webpage_hits/webpage_hits_list
     if ok, then
 cargo auto doc
 {RESET}"#,

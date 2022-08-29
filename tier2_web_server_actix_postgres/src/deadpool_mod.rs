@@ -3,7 +3,6 @@ pub async fn deadpool_postgres_start() -> deadpool_postgres::Pool {
     // this loads our .env file and includes the values in std::env
     println!("Reading dotenv");
     dotenv::dotenv().ok();
-    println!("set pg_config");
     let mut pg_config = tokio_postgres::Config::new();
     pg_config.host(std::env::var("PG.HOST").unwrap().as_str());
     pg_config.user(std::env::var("PG.USER").unwrap().as_str());
@@ -11,13 +10,20 @@ pub async fn deadpool_postgres_start() -> deadpool_postgres::Pool {
     let mgr_config = deadpool_postgres::ManagerConfig {
         recycling_method: deadpool_postgres::RecyclingMethod::Fast,
     };
-    println!("create manager");
     let mgr = deadpool_postgres::Manager::from_config(pg_config, tokio_postgres::NoTls, mgr_config);
-    println!("create pool");
+    println!("Create pool");
     let pool = deadpool_postgres::Pool::builder(mgr)
         .max_size(16)
         .build()
         .unwrap();
     // return
+    pool
+}
+
+/// start and check the connection pool to postgres
+pub async fn deadpool_start_and_check() -> deadpool_postgres::Pool {
+    let pool = crate::deadpool_mod::deadpool_postgres_start().await;
+    // Check the connection to postgres database and panic if error
+    let _client: deadpool_postgres::Client = pool.get().await.unwrap();
     pool
 }
