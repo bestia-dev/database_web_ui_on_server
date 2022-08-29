@@ -4,17 +4,17 @@
 
 [comment]: # (auto_cargo_toml_to_md start)
 
-**07. Web-app processed on the web server for CRUD database operations**  
-***version: 1.0.31 date: 2022-05-14 author: [bestia.dev](https://bestia.dev) repository: [Github](https://github.com/bestia-dev/database_web_ui_on_server)***  
+**07. Tutorial for Coding a database Web UI in Rust (database_web_ui_on_server) (2022-08)**  
+***version: 0.0.47 date: 2022-08-28 author: [bestia.dev](https://bestia.dev) repository: [Github](https://github.com/bestia-dev/database_web_ui_on_server)***  
 
 [comment]: # (auto_cargo_toml_to_md end)
 
 [comment]: # (auto_lines_of_code start)
-[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-167-green.svg)](https://github.com/bestia-dev/database_web_ui_on_server/)
-[![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-237-blue.svg)](https://github.com/bestia-dev/database_web_ui_on_server/)
-[![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-38-purple.svg)](https://github.com/bestia-dev/database_web_ui_on_server/)
-[![Lines in examples](https://img.shields.io/badge/Lines_in_examples-19-yellow.svg)](https://github.com/bestia-dev/database_web_ui_on_server/)
-[![Lines in tests](https://img.shields.io/badge/Lines_in_tests-36-orange.svg)](https://github.com/bestia-dev/database_web_ui_on_server/)
+[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-230-green.svg)](https://github.com/bestia-dev/database_web_ui_on_server/)
+[![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-9-blue.svg)](https://github.com/bestia-dev/database_web_ui_on_server/)
+[![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-28-purple.svg)](https://github.com/bestia-dev/database_web_ui_on_server/)
+[![Lines in examples](https://img.shields.io/badge/Lines_in_examples-0-yellow.svg)](https://github.com/bestia-dev/database_web_ui_on_server/)
+[![Lines in tests](https://img.shields.io/badge/Lines_in_tests-0-orange.svg)](https://github.com/bestia-dev/database_web_ui_on_server/)
 
 [comment]: # (auto_lines_of_code end)
 
