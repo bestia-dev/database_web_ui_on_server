@@ -2,6 +2,7 @@
 
 mod actix_mod;
 mod deadpool_mod;
+mod error_mod;
 mod postgres_mod;
 mod webpage_hits_mod;
 

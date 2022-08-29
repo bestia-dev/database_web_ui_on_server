@@ -1,4 +1,7 @@
 //! deadpool_mod.rs
+
+use crate::error_mod::AppError;
+
 pub async fn deadpool_postgres_start() -> deadpool_postgres::Pool {
     // this loads our .env file and includes the values in std::env
     println!("Reading dotenv");
@@ -26,4 +29,14 @@ pub async fn deadpool_start_and_check() -> deadpool_postgres::Pool {
     // Check the connection to postgres database and panic if error
     let _client: deadpool_postgres::Client = pool.get().await.unwrap();
     pool
+}
+
+type DbPool = actix_web::web::Data<deadpool_postgres::Pool>;
+
+/// get client from pool
+pub async fn get_client_from_pool(db_pool: DbPool) -> Result<deadpool_postgres::Object, AppError> {
+    db_pool
+        .get()
+        .await
+        .map_err(|_| crate::error_mod::AppError::DatabaseConnection)
 }
