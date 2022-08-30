@@ -81,7 +81,7 @@ package "3tier_database" {
 
 </details>
 
-![https://github.com/bestia-dev/database_web_ui_on_server/raw/main/images/3tier.png]
+![3tier](https://github.com/bestia-dev/database_web_ui_on_server/raw/main/images/3tier.png)
 
 The same application could then work everywhere:
 
