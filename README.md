@@ -28,6 +28,11 @@ My projects on Github are more like a tutorial than a finished product: [bestia-
 
 This is the 7th part of the [Rust tutorial series](https://www.youtube.com/channel/UCitt3zFHK2jDetDh6ezI05A). Today we will code a "Web-app processed on the web server for CRUD database operations". We will use the Rust development environment inside a container and the knowledge we developed in this tutorial series.  
 
+This project has also a youtube video tutorial. Watch it:
+<!-- markdownlint-disable MD033 -->
+[<img src="https://bestia.dev/youtube/database_web_ui_on_server.png" width="400px">](https://bestia.dev/youtube/database_web_ui_on_server.html)
+<!-- markdownlint-enable MD033 -->
+
 ## Motivation
 
 Most of the software solutions do just simple things: saving, transforming and reading data.  
