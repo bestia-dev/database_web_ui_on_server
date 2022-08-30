@@ -4,12 +4,13 @@
 
 [comment]: # (auto_cargo_toml_to_md start)
 
-**07. Tutorial for Coding a database Web UI in Rust (database_web_ui_on_server) (2022-08)**  
+**07. Tutorial for Coding a database Web UI in Rust (2022-08)**  
 ***version: 0.0.47 date: 2022-08-28 author: [bestia.dev](https://bestia.dev) repository: [Github](https://github.com/bestia-dev/database_web_ui_on_server)***  
 
 [comment]: # (auto_cargo_toml_to_md end)
 
 [comment]: # (auto_lines_of_code start)
+
 [![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-230-green.svg)](https://github.com/bestia-dev/database_web_ui_on_server/)
 [![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-9-blue.svg)](https://github.com/bestia-dev/database_web_ui_on_server/)
 [![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-28-purple.svg)](https://github.com/bestia-dev/database_web_ui_on_server/)
@@ -18,19 +19,19 @@
 
 [comment]: # (auto_lines_of_code end)
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bestia-dev/database_web_ui_on_server/blob/main/LICENSE) [![Rust](https://github.com/bestia-dev/database_web_ui_on_server/workflows/RustAction/badge.svg)](https://github.com/bestia-dev/database_web_ui_on_server/) ![Hits](https://bestia.dev/webpage_hit_counter/get_svg_image/93552555.svg)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bestia-dev/database_web_ui_on_server/blob/main/LICENSE) [![Rust](https://github.com/bestia-dev/database_web_ui_on_server/workflows/RustAction/badge.svg)](https://github.com/bestia-dev/database_web_ui_on_server/) ![Hits](https://bestia.dev/webpage_hit_counter/get_svg_image/0.svg)
 
-Hashtags: #rustlang #tutorial  
+Hashtags: #rust #rustlang #tutorial  
 My projects on Github are more like a tutorial than a finished product: [bestia-dev tutorials](https://github.com/bestia-dev/tutorials_rust_wasm).
 
 ## Intro
 
-Welcome to bestia.dev !
-Learning Rust and Wasm programming and having fun.
-I just love programming !
+Welcome to bestia.dev !  
+Learning Rust and Wasm programming and having fun.  
+I just love programming !  
 
-This is the 7th part of the [Rust tutorial series](https://www.youtube.com/channel/UCitt3zFHK2jDetDh6ezI05A). Today we will code a "Web-app processed on the web server for CRUD database operations". We will use the Rust development environment inside a container and the knowledge we developed in this tutorial series.
-I have a lot of talking to do, therefore I will start coding immediately even if it is not in sync with my words. The coding will be just self-explanatory or explained later in the talk.
+This is the 7th part of the [Rust tutorial series](https://www.youtube.com/channel/UCitt3zFHK2jDetDh6ezI05A). Today we will code a "Web-app processed on the web server for CRUD database operations". We will use the Rust development environment inside a container and the knowledge we developed in this tutorial series.  
+I have a lot of talking to do, therefore I will start coding immediately even if it is not in sync with my words. The coding will be just self-explanatory or explained later in the talk.  
 
 ## Motivation
 
