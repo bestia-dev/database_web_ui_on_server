@@ -1,6 +1,6 @@
 [package]
 name = "tier2_web_server_actix_postgres"
-version = "0.0.48"
+version = "0.0.55"
 description = "07. Tutorial for Coding a database Web UI in Rust (database_web_ui_on_server) (2022-08)"
 authors = ["bestia.dev"]
 homepage = "https://bestia.dev"

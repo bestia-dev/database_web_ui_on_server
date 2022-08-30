@@ -1,6 +1,7 @@
 // database_web_ui_on_server/tier2_web_server_actix_postgres/src/bin/database_web_ui_on_server/main.rs
 use tier2_web_server_actix_postgres as tier2;
 
+/// the binary executable entry point
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     pretty_env_logger::init();

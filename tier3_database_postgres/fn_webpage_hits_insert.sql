@@ -1,8 +1,8 @@
 create or replace function public.webpage_hits_insert(
 _id integer,
-_webpage text,
+_webpage varchar(100),
 _hit_count integer)
-returns table(id integer, webpage text, hit_count integer) 
+returns table(id integer, webpage varchar(100), hit_count integer) 
 language 'plpgsql'
 as $body$
 declare

@@ -20,3 +20,15 @@ select *
 from webpage_hits_update(1234,'1234', 1234);
 
 select webpage_hits_delete(1234);
+
+-- overloading functions in postgres is abominable
+-- check and drop the duplicates
+
+select count(*), proname 
+from pg_proc 
+where pronamespace <> 11 
+group by proname 
+having count(*) > 1;
+
+-- drop function
+
