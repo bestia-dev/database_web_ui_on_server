@@ -1,5 +1,6 @@
 //! deadpool_mod.rs
 
+type DbPool = actix_web::web::Data<deadpool_postgres::Pool>;
 use crate::error_mod::LibError;
 
 /// create and start the connection pool
@@ -31,8 +32,6 @@ pub async fn deadpool_start_and_check() -> deadpool_postgres::Pool {
     let _client: deadpool_postgres::Client = pool.get().await.unwrap();
     pool
 }
-
-type DbPool = actix_web::web::Data<deadpool_postgres::Pool>;
 
 /// get client from pool
 pub async fn get_client_from_pool(db_pool: DbPool) -> Result<deadpool_postgres::Object, LibError> {
