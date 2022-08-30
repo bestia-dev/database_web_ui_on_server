@@ -26,11 +26,7 @@ My projects on Github are more like a tutorial than a finished product: [bestia-
 
 ## Intro
 
-Welcome to bestia.dev !  
-Learning Rust and Wasm programming and having fun.  
-I just love programming !  
-
-This is the 7th part of the [Rust tutorial series](https://www.youtube.com/channel/UCitt3zFHK2jDetDh6ezI05A). Today we will code a "Web-app processed on the web server for CRUD database operations". We will use the Rust development environment inside a container and the knowledge we developed in this tutorial series.   
+This is the 7th part of the [Rust tutorial series](https://www.youtube.com/channel/UCitt3zFHK2jDetDh6ezI05A). Today we will code a "Web-app processed on the web server for CRUD database operations". We will use the Rust development environment inside a container and the knowledge we developed in this tutorial series.  
 
 ## Motivation
 
@@ -98,11 +94,11 @@ The SQL language is also extra simple. It uses just a few simple and understanda
 We can read the data with the SELECT statement. We can JOIN related tables and we can filter the data with WHERE. Finally we can ORDER the data.  
 SQL statements are usually just a string and the first instinct is to just concatenate it.  
 Wrong !!!  
-If you mix commands and data like in the SQL statement, there is the possibility of an SQL injection! If a malicious player writes commands instead of data, the server will run it and chaos will win. So we need to enforce true parameters. There must be no way how to introduce a SQL injection attack.    
+If you mix commands and data like in the SQL statement, there is the possibility of an SQL injection! If a malicious player writes commands instead of data, the server will run it and chaos will win. So we need to enforce true parameters. There must be no way how to introduce a SQL injection attack.  
 
 For complicated SELECT statement I prefer to create VIEWs inside the database server. Then this can be used from multiple places.  
 
-For INSERT, UPDATE and DELETE I like to write sql functions that change data.  Often, we need to check some other data before or after we change some data. Sql functions live very near to where the data is stored so I expect best performance.   
+For INSERT, UPDATE and DELETE I like to write sql functions that change data.  Often, we need to check some other data before or after we change some data. Sql functions live very near to where the data is stored so I expect best performance.  
 
 ## Web server and web app
 
@@ -135,9 +131,9 @@ We have basically 3 projects here. Rust allows us to combine projects into works
 The automation tasks that are very simple for one solo project will be a little more complex now. But we have no limits to write any Rust code in the cargo-auto tasks. And once it works, it is a template for any 3-tier project.  
 The sub-project for this tutorial will have these names:  
 
-tier1_browser_wasm
-tier2_web_server_actix_postgres
-tier3_database_postgres
+- tier1_browser_wasm  
+- tier2_web_server_actix_postgres  
+- tier3_database_postgres  
 
 The Cargo.toml of the workspace is very different from Cargo.toml of solo projects. It only contains the members of the workspace.  
 
@@ -148,7 +144,7 @@ We will use our Rust development environment in a container like we do in all Ru
 ## First request
 
 We will start coding with the web server to reply a simple static html code and try it immediately. From the last tutorial we know how to add the Actix crate to Cargo.toml and how to start the server and route the request to call a function. Let call the route and the function "hit_counter_list".  
-We will also use the same exact database "webpage_hit_counter" as the last tutorial. I want to create, read, update and delete data for tables "webpage" and "hit_counter".    
+We will also use the same exact database "webpage_hit_counter" as the last tutorial. I want to create, read, update and delete data for tables "webpage" and "hit_counter".  
 
 ## webpage_hits object
 
@@ -159,9 +155,10 @@ Then a Rust module just for that.
 We want the web routing code to be close to the implementation. We can use the actix ServiceConfig for that. First we use the actix_web scope function to route all requests that start with "webpage_hits" to the Rust module. Then inside the module we will route to the appropriate function using the decoration "#actix web get". Very easy once it is in place.  
 
 For the CRUD User interface we need 7 functions. The 3 functions not included in the acronym CRUD are: List, New and Edit. This is part of the User Interface, there is not a lot of data manipulation here. So we have more or less:
-7 web paths,
-7 Rust functions,
-5 database functions and 1 view.
+
+- 7 web paths,
+- 7 Rust functions,
+- 5 database functions and 1 view.
 
 In the first iteration of the project there will be a lot of code duplication. This enables great flexibility, but the maintenance can get boring if we need to change something.  
 Having the HTML code inside the Rust code is also not great. We will make it better the next time.  
@@ -185,14 +182,6 @@ Everything works like a swiss clock! Great!
 I will use the knowledge from the last tutorial to deploy this all to my Google VM.
 I will restrict the access to this web app, so only I can modify the webpage_hits.
 But this will not be part of the tutorial.  
-
-## Outro
-
-In the next tutorial we will code some WASM/Webassembly code for the browser. The mixing of presentation and data will happen on the client.  
-
-This is all for today.  
-Thank you for watching and see you next time.  
-Find my code and tutorials on bestia.dev or github.
 
 ## cargo crev reviews and advisory
 
