@@ -96,15 +96,17 @@ I like to use the open-source Postgres sql server.
 The 4 operations on the data are called CRUD (create, read, update and delete). It does not look complicated.  
 The SQL language is also extra simple. It uses just a few simple and understandable english words and a simple syntax.  
 We can read the data with the SELECT statement. We can JOIN related tables and we can filter the data with WHERE. Finally we can ORDER the data.  
-SQL statements are usually just a string and the first instinct is to just concatenate it. Wrong! If you mix commands and data like in the SQL statement, there is the possibility of an SQL injection! If a malicious player writes commands instead of data, the server will run it and chaos will win. So we need to enforce true parameters. There must be no way how to introduce a SQL injection attack. TODO: explore this in rust.  
+SQL statements are usually just a string and the first instinct is to just concatenate it.  
+Wrong !!!  
+If you mix commands and data like in the SQL statement, there is the possibility of an SQL injection! If a malicious player writes commands instead of data, the server will run it and chaos will win. So we need to enforce true parameters. There must be no way how to introduce a SQL injection attack.    
 
 For complicated SELECT statement I prefer to create VIEWs inside the database server. Then this can be used from multiple places.  
 
-For INSERT, UPDATE and DELETE I like to write stored procedures that change data.  Often, we need to check some other data before or after we change some data. Stored procedures live very near to where the data is stored so I expect best performance.   
+For INSERT, UPDATE and DELETE I like to write sql functions that change data.  Often, we need to check some other data before or after we change some data. Sql functions live very near to where the data is stored so I expect best performance.   
 
 ## Web server and web app
 
-Basically all the data manipulation and retrieval is coded inside the database with views and stored procedures. Our web server just need to transform this data into a user friendly interface. There is not much specific code we need in this Rust code. It is mostly generic. Just transformation between database and user interface.  
+Basically all the data manipulation and retrieval is coded inside the database with views and sql functions. Our web server just need to transform this data into a user friendly interface. There is not much specific code we need in this Rust code. It is mostly generic. Just transformation between database and user interface.  
 
 For this tutorial I will manipulate the HTML code on the server, just like in the good-old times. In the next tutorial we will manipulate the data on the client like kids do it today.  
 
@@ -120,7 +122,7 @@ The 3 tiers communication is mostly just request-response of text over a TCP or 
 The browser sends a request to the web server. The request is just some text sent to an URL address.  
 The web server parses the request to understand what to do. Then it calls some function of the web application.  
 Nothing much happens in this function. Usually it just sends a SQL statement to the SQL server. Again it is just a text sent to an URL address.  
-The logic is mostly inside the database in views and stored procedures. This is performant because it is really close to the data. After the logic read and transform the data, it responds with some data back to the web server. This can be a single or multiple records/rows. We can call this a dataset.  
+The logic is mostly inside the database in views and sql functions. This is performant because it is really close to the data. After the logic read and transform the data, it responds with some data back to the web server. This can be a single or multiple records/rows. We can call this a dataset.  
 The web server/application now combines the data with the user interface. Sadly, HTML does not have a clear separation between data and the HTML code. We will try to create that in the next tutorial. Step-by-step.  
 The web server replies to the browser with some HTML5, CSS3 and WASM code.
 The browser finally renders this into a Graphical User Interface.  
