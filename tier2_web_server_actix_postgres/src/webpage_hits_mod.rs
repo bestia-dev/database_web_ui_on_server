@@ -3,6 +3,7 @@
 type DbPool = actix_web::web::Data<deadpool_postgres::Pool>;
 type ResultResponse = actix_web::Result<actix_web::HttpResponse>;
 type WebQuery = actix_web::web::Query<Vec<(String, String)>>;
+
 use crate::actix_mod::get_i32_from_web_query;
 use crate::actix_mod::get_str_from_web_query;
 use crate::actix_mod::return_response_no_cache;
@@ -10,6 +11,7 @@ use crate::error_mod::time_epoch;
 use crate::postgres_mod::run_sql_select_query;
 use crate::postgres_mod::run_sql_single_row_function;
 use crate::postgres_mod::run_sql_void_function;
+
 /// scoped actix routing near the implementation code
 /// actix have this "magic data extraction thing" to accommodate different parameters
 pub fn config_route_webpage_hits(cfg: &mut actix_web::web::ServiceConfig) {
@@ -21,12 +23,15 @@ pub fn config_route_webpage_hits(cfg: &mut actix_web::web::ServiceConfig) {
         .service(webpage_hits_update)
         .service(webpage_hits_delete);
 }
+
 /// list all webpages and counts
 #[actix_web::get("/webpage_hits_list")]
 pub async fn webpage_hits_list(db_pool: DbPool) -> ResultResponse {
     println!("{} webpage_hits_list", time_epoch());
+
     // region: 1. parse params from web query
     // endregion
+
     // region: 2. send parameters to database and get data from database
     let row_set = run_sql_select_query(
         db_pool,
@@ -35,6 +40,7 @@ pub async fn webpage_hits_list(db_pool: DbPool) -> ResultResponse {
     )
     .await?;
     // endregion
+
     // region: 3. presentation with replaceable mustache
     let body = r#"
 <html>
@@ -59,6 +65,7 @@ pub async fn webpage_hits_list(db_pool: DbPool) -> ResultResponse {
 </html>
 "#;
     // endregion
+
     // region: 4. mix presentation and data because of html
     let mut table_content = String::new();
     for r in row_set {
@@ -83,19 +90,24 @@ pub async fn webpage_hits_list(db_pool: DbPool) -> ResultResponse {
     }
     let body = body.replace("{table_content}", &table_content);
     // endregion
+
     // region: 5. return response
     return_response_no_cache(body)
     // endregion
 }
+
 /// new record UI
 #[actix_web::get("/webpage_hits_new")]
 pub async fn webpage_hits_new(db_pool: DbPool) -> ResultResponse {
     println!("{} webpage_hits_new", time_epoch());
+
     // region: 1. parse params from web query
     // endregion
+
     // region: 2. send parameters to database and get data from database
     let single_row = run_sql_single_row_function(db_pool, "webpage_hits_new", &[]).await?;
     // endregion
+
     // region: 3. presentation with replaceable mustache
     // write and test the html+css on https://jsfiddle.net/
     let body = String::from(
@@ -127,6 +139,7 @@ pub async fn webpage_hits_new(db_pool: DbPool) -> ResultResponse {
 "#,
     );
     // endregion
+
     // region: 4. mix presentation and data because of html
     let id: i32 = single_row.get(0);
     let webpage: String = single_row.get(1);
@@ -136,20 +149,25 @@ pub async fn webpage_hits_new(db_pool: DbPool) -> ResultResponse {
         .replace("{webpage}", &webpage)
         .replace("{hit_count}", &hit_count.to_string());
     // endregion
+
     // region: 5. return response
     return_response_no_cache(body)
     // endregion
 }
+
 /// edit record UI
 #[actix_web::get("/webpage_hits_edit")]
 pub async fn webpage_hits_edit(db_pool: DbPool, query: WebQuery) -> ResultResponse {
     println!("{} webpage_hits_edit", time_epoch());
+
     // region: 1. parse params from web query
     let id = get_i32_from_web_query(&query, "id")?;
     // endregion
+
     // region: 2. send parameters to database and get data from database
     let single_row = run_sql_single_row_function(db_pool, "webpage_hits_read", &[&id]).await?;
     // endregion
+
     // region: 3. presentation with replaceable mustache
     // write and test the html+css on https://jsfiddle.net/
     let body = String::from(
@@ -181,6 +199,7 @@ pub async fn webpage_hits_edit(db_pool: DbPool, query: WebQuery) -> ResultRespon
     "#,
     );
     // endregion
+
     // region: 4. mix presentation and data because of html
     let id: i32 = single_row.get(0);
     let webpage: String = single_row.get(1);
@@ -190,24 +209,29 @@ pub async fn webpage_hits_edit(db_pool: DbPool, query: WebQuery) -> ResultRespon
         .replace("{webpage}", &webpage)
         .replace("{hit_count}", &hit_count.to_string());
     // endregion
+
     // region: 5. return response
     return_response_no_cache(body)
     // endregion
 }
+
 /// CRUD - create(insert)
 #[actix_web::get("/webpage_hits_insert")]
 pub async fn webpage_hits_insert(db_pool: DbPool, query: WebQuery) -> ResultResponse {
     println!("{} webpage_hits_insert", time_epoch());
+
     // region: 1. parse params from web query
     let id = get_i32_from_web_query(&query, "id")?;
     let webpage = get_str_from_web_query(&query, "webpage")?.to_string();
     let hit_count = get_i32_from_web_query(&query, "hit_count")?;
     // endregion
+
     // region: 2. send parameters to database and get data from database
     let single_row =
         run_sql_single_row_function(db_pool, "webpage_hits_insert", &[&id, &webpage, &hit_count])
             .await?;
     // endregion
+
     // region: 3. presentation with replaceable mustache
     // write and test the html+css on https://jsfiddle.net/
     let body = String::from(
@@ -241,6 +265,7 @@ pub async fn webpage_hits_insert(db_pool: DbPool, query: WebQuery) -> ResultResp
     "#,
     );
     // endregion
+
     // region: 4. mix presentation and data because of html
     let id: i32 = single_row.get(0);
     let webpage: String = single_row.get(1);
@@ -250,20 +275,25 @@ pub async fn webpage_hits_insert(db_pool: DbPool, query: WebQuery) -> ResultResp
         .replace("{webpage}", &webpage)
         .replace("{hit_count}", &hit_count.to_string());
     // endregion
+
     // region: 5. return response
     return_response_no_cache(body)
     // endregion
 }
+
 /// CRUD - read one record
 #[actix_web::get("/webpage_hits_read")]
 pub async fn webpage_hits_read(db_pool: DbPool, query: WebQuery) -> ResultResponse {
     println!("{} webpage_hits_read", time_epoch());
+
     // region: 1. parse params from web query
     let id = get_i32_from_web_query(&query, "id")?;
     // endregion
+
     // region: 2. send parameters to database and get data from database
     let single_row = run_sql_single_row_function(db_pool, "webpage_hits_read", &[&id]).await?;
     // endregion
+
     // region: 3. presentation with replaceable mustache
     // write and test the html+css on https://jsfiddle.net/
     let body = String::from(
@@ -296,6 +326,7 @@ pub async fn webpage_hits_read(db_pool: DbPool, query: WebQuery) -> ResultRespon
     "#,
     );
     // endregion
+
     // region: 4. mix presentation and data because of html
     let id: i32 = single_row.get(0);
     let webpage: String = single_row.get(1);
@@ -305,24 +336,29 @@ pub async fn webpage_hits_read(db_pool: DbPool, query: WebQuery) -> ResultRespon
         .replace("{webpage}", &webpage)
         .replace("{hit_count}", &hit_count.to_string());
     // endregion
+
     // region: 5. return response
     return_response_no_cache(body)
     // endregion
 }
+
 /// CRUD - update
 #[actix_web::get("/webpage_hits_update")]
 pub async fn webpage_hits_update(db_pool: DbPool, query: WebQuery) -> ResultResponse {
     println!("{} webpage_hits_update", time_epoch());
+
     // region: 1. parse params from web query
     let id = get_i32_from_web_query(&query, "id")?;
     let webpage = get_str_from_web_query(&query, "webpage")?.to_string();
     let hit_count = get_i32_from_web_query(&query, "hit_count")?;
     // endregion
+
     // region: 2. send parameters to database and get data from database
     let single_row =
         run_sql_single_row_function(db_pool, "webpage_hits_update", &[&id, &webpage, &hit_count])
             .await?;
     // endregion
+
     // region: 3. presentation with replaceable mustache
     // write and test the html+css on https://jsfiddle.net/
     let body = String::from(
@@ -356,6 +392,7 @@ pub async fn webpage_hits_update(db_pool: DbPool, query: WebQuery) -> ResultResp
     "#,
     );
     // endregion
+
     // region: 4. mix presentation and data because of html
     let id: i32 = single_row.get(0);
     let webpage: String = single_row.get(1);
@@ -365,20 +402,25 @@ pub async fn webpage_hits_update(db_pool: DbPool, query: WebQuery) -> ResultResp
         .replace("{webpage}", &webpage)
         .replace("{hit_count}", &hit_count.to_string());
     // endregion
+
     // region: 5. return response
     return_response_no_cache(body)
     // endregion
 }
+
 /// CRUD - delete
 #[actix_web::get("/webpage_hits_delete")]
 pub async fn webpage_hits_delete(db_pool: DbPool, query: WebQuery) -> ResultResponse {
     println!("{} webpage_hits_delete", time_epoch());
+
     // region: 1. parse params from web query
     let id = get_i32_from_web_query(&query, "id")?;
     // endregion
+
     // region: 2. send parameters to database and get data from database
     run_sql_void_function(db_pool, "webpage_hits_delete", &[&id]).await?;
     // endregion
+
     // region: 3. presentation with replaceable mustache
     // write and test the html+css on https://jsfiddle.net/
     let body = String::from(
@@ -398,9 +440,12 @@ pub async fn webpage_hits_delete(db_pool: DbPool, query: WebQuery) -> ResultResp
 "#,
     );
     // endregion
+
     // region: 4. mix presentation and data because of html
     // endregion
+
     // region: 5. return response
     return_response_no_cache(body)
     // endregion
+
 }

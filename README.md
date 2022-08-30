@@ -160,29 +160,31 @@ Having the HTML code inside the Rust code is also not great. We will make it bet
 
 ## Error handling
 
-We need some error handling now. We want to show a meaningful message to the user and to log something more detailed for the developer.
-Actix has a trait we can use for error handling.
+We need some error handling now. We want to show a meaningful message to the user and to log something more detailed for the developer. I will use the "thiserror" crate to customize the library errors. Actix has a trait that we can use to define the reporting behavior for errors in the web server.
+All the error handling is done in helper functions. So it is not duplicated in the specific response functions. The new feature "track_caller" shows the meaningful location in the source code where the error happened.
 
+## Refactoring
 
+The strongest feature of Rust is fearless refactoring. The compiler with the strict type system is so good that it catches every mistake while refactoring. After refactoring the code is neatly structured in functions and regions. These can be folded for better readability.
 
+## Final test
 
+We can finally try all the CRUD functionality of our application. We can also try the error handling and reporting when we enter bad data.
+Everything works like a swiss clock! Great!
 
+## Deploy
 
+I will use the knowledge from the last tutorial to deploy this all to my Google VM.
+I will restrict the access to this web app, so only I can modify the webpage_hits.
+But this will not be part of the tutorial.
 
+## Outro
 
+In the next tutorial we will code some WASM/Webassembly code for the browser. The mixing of presentation and data will happen on the client.
 
-
-
-
-
- 
-
-
-
-
-
-
-
+This is all for today.  
+Thank you for watching and see you next time.  
+Find my code and tutorials on bestia.dev or github.
 
 ## cargo crev reviews and advisory
 
