@@ -30,8 +30,7 @@ Welcome to bestia.dev !
 Learning Rust and Wasm programming and having fun.  
 I just love programming !  
 
-This is the 7th part of the [Rust tutorial series](https://www.youtube.com/channel/UCitt3zFHK2jDetDh6ezI05A). Today we will code a "Web-app processed on the web server for CRUD database operations". We will use the Rust development environment inside a container and the knowledge we developed in this tutorial series.  
-I have a lot of talking to do, therefore I will start coding immediately even if it is not in sync with my words. The coding will be just self-explanatory or explained later in the talk.  
+This is the 7th part of the [Rust tutorial series](https://www.youtube.com/channel/UCitt3zFHK2jDetDh6ezI05A). Today we will code a "Web-app processed on the web server for CRUD database operations". We will use the Rust development environment inside a container and the knowledge we developed in this tutorial series.   
 
 ## Motivation
 
@@ -46,12 +45,14 @@ I'd like to use Rust as much as possible.
 
 We can use the internet standards to assure that our application is cross-platform. It will work as long as a modern browser works on the machine.
 
-We want to separate the application in 3 levels, to allow for great installation flexibility.  
+We want to separate the application in 3 tiers, to allow for great installation flexibility.  
 Three-tier architecture is a well-established software application architecture that organizes applications into three logical and physical computing tiers:
 
 1. the presentation tier, or user interface
 2. the application tier, where data is processed
 3. the data tier, where the data is stored and managed
+
+<details>
 
 ```plantuml
 @startuml
@@ -77,6 +78,10 @@ package "3tier_database" {
 [Connection to Postgres] --> [DB Connection address]
 @enduml
 ```
+
+</details>
+
+![https://github.com/bestia-dev/database_web_ui_on_server/raw/main/images/3tier.png]
 
 The same application could then work everywhere:
 
