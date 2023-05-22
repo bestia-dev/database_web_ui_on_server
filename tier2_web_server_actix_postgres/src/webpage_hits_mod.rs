@@ -447,5 +447,4 @@ pub async fn webpage_hits_delete(db_pool: DbPool, query: WebQuery) -> ResultResp
     // region: 5. return response
     return_response_no_cache(body)
     // endregion
-
 }
