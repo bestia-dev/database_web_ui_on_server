@@ -9,7 +9,7 @@
 
 [//]: # (auto_cargo_toml_to_md end)
 
-![status](https://img.shields.io/badge/tutorial-yellow) 
+ ![tutorial](https://img.shields.io/badge/tutorial-yellow)
 
 [//]: # (auto_lines_of_code start)
 
@@ -21,7 +21,9 @@
 
 [//]: # (auto_lines_of_code end)
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bestia-dev/database_web_ui_on_server/blob/main/LICENSE) [![Rust](https://github.com/bestia-dev/database_web_ui_on_server/workflows/RustAction/badge.svg)](https://github.com/bestia-dev/database_web_ui_on_server/) ![Hits](https://bestia.dev/webpage_hit_counter/get_svg_image/0.svg)
+ [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bestia-dev/database_web_ui_on_server/blob/main/LICENSE)
+ [![Rust](https://github.com/bestia-dev/database_web_ui_on_server/workflows/RustAction/badge.svg)](https://github.com/bestia-dev/database_web_ui_on_server/)
+ ![database_web_ui_on_server](https://bestia.dev/webpage_hit_counter/get_svg_image/65663564.svg)
 
 Hashtags: #rust #rustlang #tutorial  
 My projects on GitHub are more like a tutorial than a finished product: [bestia-dev tutorials](https://github.com/bestia-dev/tutorials_rust_wasm).
