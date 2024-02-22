@@ -190,14 +190,6 @@ I will use the knowledge from the last tutorial to deploy this all to my Google 
 I will restrict the access to this web app, so only I can modify the webpage_hits.
 But this will not be part of the tutorial.  
 
-## cargo crev reviews and advisory
-
-We live in times of danger with [supply chain attacks](https://en.wikipedia.org/wiki/Supply_chain_attack).  
-It is recommended to always use [cargo-crev](https://github.com/crev-dev/cargo-crev) to verify the trustworthiness of each of your dependencies.  
-Please, spread this info.  
-You can also read crev reviews quickly on the web:  
-<https://web.crev.dev/rust-reviews/crates/>  
-
 ## Open-source and free as a beer
 
 My open-source projects are free as a beer (MIT license).  
