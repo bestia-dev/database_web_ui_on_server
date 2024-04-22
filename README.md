@@ -22,7 +22,7 @@
 [//]: # (auto_lines_of_code end)
 
  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bestia-dev/database_web_ui_on_server/blob/main/LICENSE)
- [![Rust](https://github.com/bestia-dev/database_web_ui_on_server/workflows/RustAction/badge.svg)](https://github.com/bestia-dev/database_web_ui_on_server/)
+ [![Rust](https://github.com/bestia-dev/database_web_ui_on_server/workflows/rust_fmt_auto_build_test/badge.svg)](https://github.com/bestia-dev/database_web_ui_on_server/)
  ![database_web_ui_on_server](https://bestia.dev/webpage_hit_counter/get_svg_image/65663564.svg)
 
 Hashtags: #rust #rustlang #tutorial  
